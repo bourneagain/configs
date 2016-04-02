@@ -1,7 +1,4 @@
-" VIMRC - PLUGINS ADDED
-
-
-set nocompatible              " required
+set nocompatible              " required                                                   
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,13 +7,25 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdtree' 
-" Use with :NERDTreeToggle
+Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 call vundle#end()            " required
-filetype plugin indent on    " required
+"filetype plugin indent on    " required
+filetype plugin on 
 
+map <C-n> :NERDTreeToggle<CR>
+map <C-o> :TlistOpen <CR>
+map <C-h> :TlistHighlightTag<CR>
+
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+"
+" " Use 256 colours (Use this setting only if your terminal supports 256
+" colours)
+set t_Co=256
 
 " Enable folding
 set foldmethod=indent
@@ -31,12 +40,12 @@ set autoindent
 
 " expand tabs into spaces
 set expandtab
-                                                                                                                                                                         
+
 " when using the >> or << commands, shift lines by 4 spaces
 set shiftwidth=4
 
 " show a visual line under the cursor's current line
-set cursorline
+"set cursorline
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
@@ -44,3 +53,13 @@ set showmatch
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 sy on
+colorscheme desert
+
+" Uncomment the following to have Vim jump to the last position when
+" " reopening a file
+"
+if has("autocmd")
+      au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+set hlsearch
